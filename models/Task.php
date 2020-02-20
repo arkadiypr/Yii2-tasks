@@ -46,7 +46,6 @@ class Task extends \yii\db\ActiveRecord
             'name' => 'Name',
             'due_date' => 'Due Date',
             'completed' => 'Completed',
-            'user_id' => 'User id',
         ];
     }
 }

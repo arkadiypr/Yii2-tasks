@@ -22,7 +22,7 @@ use kartik\date\DatePicker;
 	        'placeholder' => 'Введите название',
 	    ]) ?>
 
-    <?= $form->field($model, 'user_id')->hiddenInput(['value' => Yii::$app->user->id]); ?>
+    <?= $form->field($model, 'user_id')->hiddenInput(['value' => Yii::$app->user->id])->label(false); ?>
 
     <?= $form->field($model, 'due_date')->widget(DatePicker::classname(),[
 //	    'model' => $model,
