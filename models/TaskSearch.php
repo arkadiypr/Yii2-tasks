@@ -17,7 +17,7 @@ class TaskSearch extends Task
     public function rules()
     {
         return [
-            [['id', 'due_date', 'completed'], 'integer'],
+            [['id', 'due_date', 'completed', 'user_id'], 'integer'],
             [['name'], 'safe'],
         ];
     }
@@ -40,7 +40,7 @@ class TaskSearch extends Task
      */
     public function search($params)
     {
-        $query = Task::find();
+        $query = Task::find()->where(['user_id' => \Yii::$app->user->id]);
 
         // add conditions that should always apply here
 
@@ -67,6 +67,7 @@ class TaskSearch extends Task
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'user_id' => $this->user_id,
             'due_date' => $this->due_date,
             'completed' => $this->completed,
         ]);

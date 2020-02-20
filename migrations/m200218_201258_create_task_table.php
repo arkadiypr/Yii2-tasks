@@ -19,6 +19,7 @@ class m200218_201258_create_task_table extends Migration
 	        'name' => $this->string(255)->notNull(),
 	        'due_date' => $this->date()->notNull(),
 	        'completed' => $this->tinyInteger()->notNull()->defaultValue(0),
+	        'user_id' => $this->integer()->defaultValue(0),
         ], $tableOptions);
     }
 
