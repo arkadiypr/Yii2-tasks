@@ -36,6 +36,16 @@ class TaskController extends Controller
 		return $this->render('menu');
 	}
 
+	public function beforeAction($action)
+	{
+		$user = Yii::$app->user;
+		if($user->isGuest AND $this->action->id !== 'login')
+		{
+			$user->loginRequired();
+		}
+		return true;
+	}
+
     /**
      * Lists all Task models.
      * @return mixed
