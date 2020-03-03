@@ -165,7 +165,8 @@ class TaskController extends Controller
 				$completed = $_POST['completed'];
 
 				if (($model = Task::findOne($id)) !== null) {
-					Yii::$app->db->createCommand()->update('task', ['completed' => $completed], "id = $id")->execute();
+					$model->completed = $completed;
+					$model->save();
 					$resData['success'] = 1;
 					$resData['message'] = 'Данные обновлены';
 				}
